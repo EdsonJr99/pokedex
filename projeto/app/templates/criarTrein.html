@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Cadastro de Treinadores</h1>
     <form method="post">
         {% csrf_token %}
-        <p>Tem certeza que desejar deletar {{ pokemon.nome }}</p>
-        <button type="submit">Sim</button>
+        {{ treinador.as_p }}
+        <button type="submit">Salvar</button>
     </form>
 </body>
 </html>
