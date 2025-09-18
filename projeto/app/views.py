@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Pokemon
-from .forms import TreinadorForm
+from .models import Pokemon, Treinador
+from .forms import TreinadorForm, PokemonForm
 
 def home(request):
     return render(request, 'home.html')
@@ -38,33 +38,33 @@ def atualizar_pokemon(request, pk):
     return render(request, 'criarPok.html', {'pokemon': form})
 
 def listar_treinador(request):
-    treinador = Treinador.objects.all()
-    return render(request, 'listarTreins.html', {'treinador': treinador})
+    treinadores = Treinador.objects.all()
+    return render(request, 'listarTreins.html', {'treinadores': treinadores})
 
 def criar_treinador(request):
     if request.method == 'POST':
         form = TreinadorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('listar_treinador')
+            return redirect('listar_treinadores')
     else:
         form = TreinadorForm()
     return render(request, 'criarTrein.html', {'treinador': form})
 
 def deletar_treinador(request, pk):
-    pokemon = Pokemon.objects.get(pk=pk)
+    treinador = Treinador.objects.get(pk=pk)
     if request.method == 'POST':
-        pokemon.delete()
+        treinador.delete()
         return redirect('listar_treinador')
     return render(request, 'confirmar_deleteTrein.html', {'treinador': treinador})
 
 def atualizar_treinador(request, pk):
-    pokemon = Pokemon.objects.get(pk=pk)
+    treinador = Treinador.objects.get(pk=pk)
     if request.method == 'POST':
-        form = PokemonForm(request.POST, instance=pokemon)
+        form = TreinadorForm(request.POST, instance=treinador)
         if form.is_valid():
             form.save()
             return redirect('listar_treinador')
     else:
-        form = PokemonForm(instance=pokemon)
-    return render(request, 'criarTrein.html', {'pokemon': form})
+        form = TreinadorForm(instance=treinador)
+    return render(request, 'criarTrein.html', {'treinador': treinador})

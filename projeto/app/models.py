@@ -9,7 +9,7 @@ class Pokemon(models.Model):
         return self.nome
 
 class Treinador(models.Model):
-    nome = models.CharField(max_length=35)
+    nomeT = models.CharField(max_length=35)
     idade = models.IntegerField()
     genero = models.CharField(max_length=20)
     main_pokemon = models.CharField(max_length=25)

@@ -9,9 +9,10 @@
     <h1>Treinadores cadastrados</h1>
     {% for treinador in treinadores %}
     <ul>
-        <li>{{ treinador.nome }}</li>
-        <li>{{ treinador.height }}</li>
-        <li>{{ treinador.weight }}</li>
+        <li>{{ treinador.nomeT }}</li>
+        <li>{{ treinador.idade }}</li>
+        <li>{{ treinador.genero }}</li>
+        <li>{{ treinador.main_pokemon }}</li>
         <a href="{% url 'deletar_treinador' treinador.id %}">Deletar</a>
         <a href="{% url 'atualizar_treinador' treinador.id %}">Atualizar</a>
     </ul>
