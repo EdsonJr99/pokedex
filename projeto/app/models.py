@@ -13,6 +13,7 @@ class Treinador(models.Model):
     idade = models.IntegerField()
     genero = models.CharField(max_length=20)
     main_pokemon = models.CharField(max_length=25)
+    
 
     def __str__(self):
         return self.nome

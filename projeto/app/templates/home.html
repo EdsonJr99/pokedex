@@ -1,0 +1,49 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title> 
+    </head>
+    <body>
+        <a href="{% url 'criar_pokemon' %}">Criar pokemon</a>
+        <a href="{% url 'listar_pokemons' %}">Lista de pokemons</a>
+        <a href="{% url 'criar_treinador' %}">Cadastrar treinador</a>
+        <a href="{% url 'listar_treinadores' %}">Listar treinadores</a>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name ='pokemon' placeholder="Procure pelo seu pokemon">
+            <button type="submit">Procure</button>
+        </form>
+       
+        <div>
+            {% if number and name %}
+            <h3>
+                Number: {{number}}
+            </h3>
+            <h3>
+                Name: {{name}}
+            </h3>
+            <h3>
+                Height: {{height}}
+            </h3>
+            <h3>
+                weight: {{weight}}
+            </h3>
+            <h3>
+                types: {{types}}
+            </h3>
+            <h3>
+                Default sprite: 
+            </h3>
+                <img src="{{sprite}}" alt = '{{name}} sprite' style="width: 70px">
+            {% else %}
+                <h3>
+                    Escreva o nome ou numero do pokemon
+                </h3>
+            {% endif %} 
+        </div>
+
+    </body>
+    </html>
